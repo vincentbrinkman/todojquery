@@ -74,6 +74,7 @@
       text-decoration: underline;
     }
   </style>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
@@ -101,16 +102,26 @@
   </div>
 
   <script>
-    // JavaScript here...
+    // JavaScript here...function updateCounters() {
+  function updateCounters() {
+  var ntodos = $(".todo").length;
+  var ncompleted = $(".completed").length
+
+  $("#total-count").html(ntodos);
+  $("#completed-count").html(ncompleted);
+  $("#todo-count").html(ntodos - ncompleted);
+}
+
+updateCounters();
     function toggleDone() {
   var checkbox = this;
 
   $(checkbox).parent().toggleClass("completed");
 
   updateCounters();
-  $("input[type=checkbox]").bind('change', toggleDone);
-}
 
+}
+$("input[type=checkbox]").bind('change', toggleDone);
   </script>
 
 </body>
